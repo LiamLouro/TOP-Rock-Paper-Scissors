@@ -1,46 +1,91 @@
-// create the function
+/* 1. Mostrar mensaje: "Elige entre piedra, papel o tijeras"
+2. Obtener la elección del jugador (humano)
+3. Generar la elección de la computadora al azar
+4. Comparar ambas elecciones:
+    - Si son iguales, mostrar "Es un empate"
+    - Si una elección gana, mostrar "Gana (jugador o computadora)"
+5. Repetir hasta que el usuario decida salir
+6. Almacenar puntajes para ambos jugadores y mostrar al final */
+
 function getComputerChoice() {
-  // generate a random number and store it
-  const result = Math.random()
-  // depending on the number, return string "rock", "paper" or "scissors"
-  if(result <= 0.33) {
-    console.log("rock")
-  } else if
-    (result > 0.33 && result < 0.66) {
-    console.log('paper') 
+  let result = Math.random();
+  let choice = "";
+
+  if (result <= 0.33) {
+    console.log("Computer choose: rock");
+    choice = "rock";
+  } else if (result > 0.33 && result < 0.66) {
+    console.log("Computer choose: paper");
+    choice = "paper";
   } else {
-    console.log('scissors');
+    console.log("Computer choose: scissors");
+    choice = "scissors";
   }
+
+  return choice;
 }
 
-getComputerChoice()
-
-// get human choice
 function getHumanChoice() {
-  // generate a prompt for the user to choice his play 
-  let humanChoice = prompt("What's your choice?")
-  // depending on what the user writes, he chooses the move
-  if(humanChoice == "rock") {
-    console.log('rock')
-  } else if(humanChoice == "paper") {
-    console.log('paper')
-  } else if(humanChoice == "scissors") {
-    console.log('You choose: scissors');
+  let choice = "";
+  let humanChoice = prompt("What's your choice?");
+
+  if (humanChoice == "rock") {
+    console.log("You choose: rock");
+    choice = "rock";
+  } else if (humanChoice == "paper") {
+    console.log("You choose: paper");
+    choice = "paper";
+  } else if (humanChoice == "scissors") {
+    console.log("You choose: scissors");
+    choice = "scissors";
   }
+
+  return choice;
 }
 
-getHumanChoice()
+function playRound(human, computer) {
+  let humanScore = 0;
+  let computerScore = 0;
 
-let humanScore = 0
-
-let computerScore = 0
-
-function playRound(getHumanChoice, getComputerChoice) {
-  // get previous choices and compare them
-  if(getComputerChoice == "rock" && getHumanChoice == "paper") {
-    console.log('You won!');
-    humanScore++
+  if (human === computer) {
+    console.log("Tie! No one wins!");
+  } else if (human === "rock" && computer === "paper") {
+    console.log("You lose! Paper beats rock");
+    computerScore++;
+  } else if (human === "rock" && computer === "scissors") {
+    console.log("You win! Rock beats scissors");
+    humanScore++;
+  } else if (human === "paper" && computer === "rock") {
+    console.log("You win! Paper beats rock");
+    humanScore++;
+  } else if (human === "paper" && computer === "scissors") {
+    console.log("You lose! Scissors beats paper");
+    computerScore++;
+  } else if (human === "scissors" && computer === "paper") {
+    console.log("You win! Scissors beats paper");
+    humanScore++;
+  } else if (human === "scissors" && computer === "rock") {
+    console.log("You lose! Rock beats scissors");
+    computerScore++;
   }
+
+  console.log(`Your score: ${humanScore}, Computer score: ${computerScore}`);
 }
 
-playRound();
+// Capture choices first
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+// Pass choices to playRound
+playRound(humanSelection, computerSelection);
+
+
+
+console.log
+// Create a function to call playRound 5 times
+// Store the total score of the 5 rounds
+// Assign a winner for the one with MORE SCORE
+
+/* console.log(getHumanChoice(), getComputerChoice()); */
+
+
