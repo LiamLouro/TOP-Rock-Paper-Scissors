@@ -81,6 +81,14 @@ function playGame(){
   playRound();
   playRound();
   playRound();
+
+  if(humanScore === 5) {
+    console.log(`You scored 5! You're the winner!`);
+  } else if(computerScore === 5) {
+    cconsole.log(`Computer scored 5! You're the loser!`);
+  } else {
+    console.log('No one scored 5! Draw!');
+  }
 }
 
 playGame()
